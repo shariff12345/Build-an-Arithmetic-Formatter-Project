@@ -1,0 +1,108 @@
+def arithmetic_arranger(problems, result3=False):
+    if(result3 == True):
+            result1 = error_problems(problems)
+            if result1 == False :
+                    return result[0]
+            else:   
+                    arranged_problems = "    ".join(first_num)+'\n' + "    ".join(sec_num)+ '\n' + "    ".join(dash_line) + '\n'+"    ".join(sum_num)       
+                    return arranged_problems
+    else:
+            result1 = error_problems(problems)
+            if result1 == False :
+                    return result[0]
+            else:   
+                    arranged_problems = "    ".join(first_num)+'\n' + "    ".join(sec_num)+ '\n' + "    ".join(dash_line)    
+                    return arranged_problems
+            
+    
+def error_problems(problems):    
+     if len(problems) > 5:
+              result.append('Error: Too many problems.' )
+              return False
+                  
+     else:
+          
+          for input_problems in problems:  
+               ans = ''                
+               div = input_problems.find("/",0,len(input_problems))
+               prod = input_problems.find("*",0,len(input_problems))
+               if(div > 0 or prod > 0):
+                     
+                     result.append("Error: Operator must be '+' or '-'.")
+                     return False
+               else:
+                    for eq in input_problems:                            
+                              if(eq.isnumeric() == True) or (eq == '+') or (eq == '-') or (eq == ' '):
+                                   ans = True                                 
+                              else: 
+                                   ans = False
+                                   break                     
+                    if ans == False:
+                    
+                         result.append('Error: Numbers must only contain digits.')
+                         return False
+                    else:
+                         ans = True
+
+     for ax in problems:  
+                    new_problems = ax.split(" ")
+                    for x in new_problems: 
+                         if ( len(x) > 4 ):
+                              
+                             result.append('Error: Numbers cannot be more than four digits.')
+                             return False
+                         else:                      
+                              final_problems.append(x)
+                         
+                    if (new_problems[1]=='+'):
+                               sums = int(new_problems[0])+ int(new_problems[2])
+                               final_problems.append(str(sums))
+                    if (new_problems[1]=='-'):
+                               diff = int(new_problems[0]) - int(new_problems[2])
+                               final_problems.append(str(diff))
+
+     total_lenght = int(len(final_problems)/4)
+     x1 = total_lenght - 1
+      
+     counter = 0
+     counter1 = 0
+     counter2 = 0
+     counter3 = 0
+          
+     while(len(final_problems) > counter):        
+                 if(len(final_problems[counter]) > len(final_problems[counter + 2])):
+                        length_problem.append(len(final_problems[counter]))
+                 else:
+                        length_problem.append(len(final_problems[counter+2]))
+                 counter += 4
+     dash = '-'
+     while( 4 > counter2):
+                    while(total_lenght > counter1):
+                           if(counter2 == 1):
+                                sec_num.append(final_problems[counter3+counter2]+final_problems[counter3+counter2+1].rjust(length_problem[counter1]+1))
+                           elif(counter2 == 2):
+                                dash_line.append(dash*(length_problem[counter1]+2))
+                           elif(counter2 == 3):
+                                sum_num.append(final_problems[counter3+counter2].rjust(length_problem[counter1]+2))
+                           else:
+                                first_num.append(final_problems[counter3+counter2].rjust(length_problem[counter1]+2))        
+
+                           counter1 +=1
+                           counter3 +=4
+                    counter2 +=1
+                    counter1 =0
+                    counter3 = 0 
+     
+      
+
+result = []                                 
+first_num = []
+sec_num = []        
+dash_line = []   
+sum_num = []       
+length_problem = [] 
+final_problems = []                                                
+new_problems = []
+
+
+
